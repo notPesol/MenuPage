@@ -99,5 +99,11 @@ section{
 @media screen and (max-width: 600px) {
     .menu-item{
         display: block;
+        text-align: center;
+    }
+    .photo{
+        width: 100%;
+        margin-right: 0;
+        border-radius: 5px;
     }
 }
