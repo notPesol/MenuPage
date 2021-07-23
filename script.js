@@ -80,8 +80,34 @@ const buttonBox = document.querySelector('.button-box');
 
 // load items
 window.addEventListener('DOMContentLoaded', function (e) {
-    displayItems(menu);
+    displayMenuItems(menu);
+    displayMenuButtons();
+    
+});
 
+
+function displayMenuItems(menu) {
+    let displayMenu = menu.map(function (item) {
+        return `<article class="menu-item">
+                    <img class="photo" src="${item.img}"
+                        alt="${item.title}">
+                    <div class="item-info">
+                        <header>
+                            <h4>${item.title}</h4>
+                            <h4 class="price">$${item.price}</h4>
+                        </header>
+                        <p class="item-text">
+                            ${item.desc}
+                        </p>
+                    </div>
+                </article>`
+    });
+    displayMenu = displayMenu.join('');
+    mainContent.innerHTML = displayMenu;
+}
+
+
+function displayMenuButtons(){
     // create unique categories
     const categories = menu.reduce(function (value, item) {
         if (!value.includes(item.category)) {
@@ -108,27 +134,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
                 }
                 return item.category === category;
             });
-            displayItems(menuCategory);
+            displayMenuItems(menuCategory);
         });
-    })
-});
-
-function displayItems(menu) {
-    let displayMenu = menu.map(function (item) {
-        return `<article class="menu-item">
-                    <img class="photo" src="${item.img}"
-                        alt="${item.title}">
-                    <div class="item-info">
-                        <header>
-                            <h4>${item.title}</h4>
-                            <h4 class="price">$${item.price}</h4>
-                        </header>
-                        <p class="item-text">
-                            ${item.desc}
-                        </p>
-                    </div>
-                </article>`
     });
-    displayMenu = displayMenu.join('');
-    mainContent.innerHTML = displayMenu;
 }
