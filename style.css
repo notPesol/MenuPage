@@ -29,7 +29,7 @@ section{
 }
 
 .btn{
-    margin-bottom: 10px;
+    margin: 0 5px 10px 5px;
     padding: 5px 5px;
     color: goldenrod;
     background: none;
